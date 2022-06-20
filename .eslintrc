@@ -1,0 +1,69 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "max-len": ["warn", { "code": 130 }],
+    "eol-last": "off",
+    "prettier/prettier": "error",
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-member-accessibility":[
+      "error",
+      {
+        "accessibility": "explicit",
+        "overrides": {
+          "accessors": "explicit",
+          "constructors": "no-public",
+          "methods": "explicit",
+          "properties": "explicit",
+          "parameterProperties": "explicit"
+        }
+      }
+    ],
+    "block-scoped-var": "error",
+    "arrow-parens": "error",
+    "eqeqeq": "error",
+    "no-var": "error",
+    "no-console": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    "no-trailing-spaces": "error",
+    "quotes": ["warn", "single", {"avoidEscape": true}],
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "describe",
+        "property": "only"
+      },
+      {
+        "object": "it",
+        "property": "only"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/ui/**/*"],
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility":[
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "no-public",
+              "methods": "no-public",
+              "properties": "explicit",
+              "parameterProperties": "explicit"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

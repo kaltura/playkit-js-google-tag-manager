@@ -1,0 +1,70 @@
+{
+  "name": "@playkit-js/google-tag-manager",
+  "version": "1.2.1",
+  "description": "",
+  "main": "dist/playkit-google-tag-manager.js",
+  "files": [
+    "dist/"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaltura/playkit-js-google-tag-manager"
+  },
+  "keywords": [
+    "@playkit-js/google-tag-manager",
+    "google-tag-manager",
+    "kaltura",
+    "player",
+    "playkit-js"
+  ],
+  "scripts": {
+    "dev": "npm run build:dev && webpack serve --open --mode development",
+    "watch": "webpack --watch --mode development",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "test": "echo \"no test specified\" && exit 0",
+    "types:check": "tsc src/index.ts src/services/types/global.d.ts --noEmit --target ESNext --moduleResolution node",
+    "lint:check": "eslint src --ext .ts --color",
+    "lint:fix": "npm run lint:check -- --fix",
+    "prettier:fix": "prettier --write .",
+    "release": "standard-version",
+    "pushTaggedRelease": "git push --follow-tags --no-verify origin master",
+    "pre:commit": "npm run types:check && npm run lint:check"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.1",
+    "eslint": "^7.32.0",
+    "eslint-config-preact": "^1.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "kaltura-player-js": "https://github.com/kaltura/kaltura-player-js.git#master",
+    "prettier": "^2.6.2",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "standard-version": "^9.5.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "peerDependencies": {
+    "kaltura-player-js": "https://github.com/kaltura/kaltura-player-js.git#master"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Jonathan T. Gold",
+    "email": "jonathan.gold@kaltura.com"
+  }
+}
