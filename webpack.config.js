@@ -49,8 +49,7 @@ module.exports = (env, { mode }) => {
       clean: true
     },
     externals: {
-      'kaltura-player-js': 'root KalturaPlayer',
-      preact: 'root KalturaPlayer.ui.preact'
+      'kaltura-player-js': 'root KalturaPlayer'
     },
     devServer: {
       static: {
