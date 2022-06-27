@@ -31,7 +31,9 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Second step: configure your container id
+### Second step: configure your container id (formatted as GTM-XXXXXX)
+
+(Should be displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard)
 
 ```js
 const config = {
