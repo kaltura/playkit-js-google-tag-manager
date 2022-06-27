@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>UI Google Tag Manager</title>
+    <title>Playkit Google Tag Manager</title>
     <script src="https://raw.githack.com/kaltura/kaltura-player-js/master/dist/kaltura-ovp-player.js"></script>
     <script src="./playkit-google-tag-manager.js"></script>
   </head>
@@ -19,7 +19,8 @@
         },
         plugins: {
           'google-tag-manager': {
-            containerId: '<YOUR CONTAINER ID>' // formatted as GTM-XXXXXX
+            containerId: '<YOUR CONTAINER ID>', // formatted as GTM-XXXXXX
+            costumeEvents: ['play', 'pause', 'seeked']
           },
         }
       };

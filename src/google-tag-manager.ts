@@ -1,43 +1,56 @@
 import { BasePlugin, KalturaPlayer } from 'kaltura-player-js';
+import { HEAD_TAG, BODY_TAG } from './gtm-tags';
 
 export const pluginName = 'google-tag-manager';
 
-const HEAD_CODE =
-  // eslint-disable-next-line max-len
-  "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXX');";
-const BODY_CODE =
-  // eslint-disable-next-line max-len
-  '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
-
 export interface GoogleTagManagerConfig {
   containerId: string;
+  costumeEvents: string[];
 }
 
 export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
-  protected static defaultConfig = {};
+  protected static defaultConfig = {
+    costumeEvents: []
+  };
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
     if (this.config.containerId) {
       this.loadTag();
+      this.initCostumeEventsListeners();
     } else {
-      this.logger.warn('No container ID provided. Tracking aborted');
+      this.logger.error('No container ID provided. Tracking aborted');
     }
   }
 
   private loadTag(): void {
     if (this.config.containerId && !document.getElementById(`kaltura-${this.config.containerId}`)) {
-      // add header script
-      const newScript = document.createElement('script');
-      const inlineScript = document.createTextNode(HEAD_CODE.replace('GTM-XXXXXX', this.config.containerId));
-      newScript.appendChild(inlineScript);
-      newScript.id = `kaltura-${this.config.containerId}`;
-      document.head.prepend(newScript);
-      // add body script
+      // Adds the header tag
+      const headScript = document.createElement('script');
+      const headScriptCode = document.createTextNode(HEAD_TAG.replace('GTM-XXXXXX', this.config.containerId));
+      headScript.appendChild(headScriptCode);
+      headScript.id = `kaltura-${this.config.containerId}`;
+      document.head.prepend(headScript);
+
+      // Defines the the dataLayer object
+      const dataLayerScript = document.createElement('script');
+      const dataLayerScriptCode = document.createTextNode('window.dataLayer = window.dataLayer || [];');
+      dataLayerScript.appendChild(dataLayerScriptCode);
+      document.head.prepend(dataLayerScript);
+
+      // Adds the body tag
       const template = document.createElement('template');
-      template.innerHTML = BODY_CODE.replace('GTM-XXXXXX', this.config.containerId);
+      template.innerHTML = BODY_TAG.replace('GTM-XXXXXX', this.config.containerId);
       document.body.prepend(template.content);
     }
+  }
+
+  private initCostumeEventsListeners(): void {
+    this.config.costumeEvents.forEach((event) => {
+      this.eventManager.listen(this.player, event, (event: CustomEvent) => {
+        window.dataLayer.push({ event: event.type });
+      });
+    });
   }
 
   public reset(): void {
