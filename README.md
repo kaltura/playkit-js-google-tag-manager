@@ -35,10 +35,7 @@ npm run dev
 # Before submitting a PR - Run the pre commit command
 npm run pre:commit
 
-# this command will run:
-
-# 1. types check
-# 2. lint check
+# this command will run type and lint checks
 ```
 
 The dev server will host files on port 8000. Once started, the demo can be found running at http://localhost:8000/.

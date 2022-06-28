@@ -1,4 +1,4 @@
-# usage guide
+# Usage guide
 
 - [Getting started](#getting-started)
   - [First step: setup](#first-step-setup)
@@ -8,7 +8,7 @@
 
 ### First step: setup
 
-First include `playkit-google-tag-manager.js` **after** kaltura-player script in your web page.
+First include the plugin script bundle **after** kaltura-player script in your web page.
 
 ```html
 <script src="https://raw.githack.com/kaltura/kaltura-player-js/master/dist/kaltura-ovp-player.js"></script>
@@ -31,9 +31,9 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Second step: configure your container id (formatted as GTM-XXXXXX)
+### Second step: configure your container id
 
-(Should be displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard)
+Should be displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard (formatted as GTM-XXXXXX)
 
 ```js
 const config = {
@@ -43,7 +43,7 @@ const config = {
   },
   plugins: {
     'google-tag-manager': {
-        containerId: 'GTM-XXXXXXX'
+        containerId: <your container id>
     },
   }
 };
@@ -53,7 +53,7 @@ const player = KalturaPlayer.setup(config);
 
 ### Triggering and listening to costume events
 
-In order to listening to player events - just pass array string to the plugin config
+In order to listening to player costume events - just pass string array to the plugin config
 
 ```js
 const config = {
@@ -62,12 +62,12 @@ const config = {
   plugins: {
     'google-tag-manager': {
         containerId: 'GTM-XXXXXXX',
-        costumeEvents: ['play', 'plaing', 'pause', 'seeked']
+        costumeEvents: ['play', 'plaing', 'pause', 'seeked', ...]
     },
   }
 };
 ```
-The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)
+**The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
 
 ## Full example
 
