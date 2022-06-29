@@ -90,7 +90,7 @@ Player elements do not contain id's selector but only css classes.
 
 ![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashborrd-Trigger-Configuration.png)
 
-####Use the following css class selectors:
+#### Use the following css class selectors:
 
 | Control Element | Class Name                                                                                 |
 | ---------- | ----------------------------------------------------------------------------------------------- |
