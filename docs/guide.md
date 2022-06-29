@@ -3,7 +3,8 @@
 - [Getting started](#getting-started)
   - [First step: setup](#first-step-setup)
   - [Second step: configure your container id](#configure-your-container-id)
-- [Triggering and listening to costume events](#triggering-and-listening-to-costume-events)
+- [Triggering costume events](#triggering-and-listening-to-costume-events)
+- [Triggering Elements Clicks](#triggering-elements-clicks)
 ## Getting started
 
 ### First step: setup
@@ -53,7 +54,7 @@ const player = KalturaPlayer.setup(config);
 
 ### Triggering and listening to costume events
 
-In order to listening to player costume events - just pass string array to the plugin config
+In order to listen to player costume events - just pass string array to the plugin config
 
 ```js
 const config = {
@@ -68,6 +69,33 @@ const config = {
 };
 ```
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
+
+### Triggering elements clicks
+
+In order to trigger Some Player Elements Clicks when condition of CSS selectors are true, 
+You should only use the 'Click Classes' option of the conditions list, out elements do not contain
+id's selector but only css classes
+
+![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashborrd-Trigger-Configuration.png)
+
+####Use the following css class selectors:
+
+| Control Element | Class Name                                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------- |
+| **PLAY**                              | `playkit-icon-play`                                                  |
+| **PAUSE**                             | `playkit-icon-pause`                                                 |
+| **PLAY**                              | `playkit-icon-rewind-10`                                             |
+| **PAUSE**                             | `playkit-icon-forward-10`                                            |
+| **VOLUME / MUTE**                     | `playkit-icon-volume-mute`                                           |
+| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
+| **SETTINGS**                          | `playkit-icon-settings`                                              |
+| **PICTURE IN PICTURE**                | `playkit-control-picture-in-picture`                                 |
+| **PICTURE IN PICTURE / START**        | `playkit-icon-picture-in-picture-star`                               |
+| **PICTURE IN PICTURE / STOP**         | `playkit-icon-picture-in-picture-stop`                               |
+| **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                              |
+| **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
+
+If you wnat to capture all player control just pass `playkit-icon` class
 
 ## Full example
 

@@ -1,4 +1,4 @@
-import { BasePlugin, KalturaPlayer } from 'kaltura-player-js';
+import { BasePlugin, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
 import { HEAD_TAG, BODY_TAG } from './gtm-tags';
 
 export const pluginName = 'google-tag-manager';
@@ -47,8 +47,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
   private initCostumeEventsListeners(): void {
     this.config.costumeEvents.forEach((event) => {
-      this.eventManager.listen(this.player, event, (event: CustomEvent) => {
-        window.dataLayer.push({ event: event.type });
+      this.eventManager.listen(this.player, event, (event: FakeEvent) => {
+        window.dataLayer.push({ event: event.type, payload: event.payload });
       });
     });
   }
