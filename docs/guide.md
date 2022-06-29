@@ -6,7 +6,7 @@
 - [Using Data Layer Variables](#Using-Data-Layer-Variables)
 - [Triggering Player Costume Events](#triggering-player-costume-events)
 - [Triggering Player UI Elements Clicks](#triggering-player-ui-elements-clicks)
-- [CSS Elements Selectors List](#Use-the-following-css-class-selectors:)
+- [Player CSS Elements Selectors List](#Use-the-following-css-class-selectors)
 ## Getting started
 
 ### First step: setup
