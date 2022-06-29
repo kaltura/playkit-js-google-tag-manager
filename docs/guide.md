@@ -70,9 +70,14 @@ const config = {
 ```
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
 
-In order get the our costume event payload under the `Value` field in `Tag Configuration` tab,
-Go to **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
+In order get our costume event payload under the `Value` field in `Tag Configuration` tab,
+Open your [Google Tag Manager](https://tagmanager.google.com) Workspace,
+Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
 under the **Data Layer Variable Name**  field.
+
+Now, you can select thet variable from the list in `Value` field in the `Tag Configuration` tab.
+
+
 
 ### Triggering elements clicks
 
