@@ -21,7 +21,7 @@ Add the plugin name to the player config under the plugins section along with th
 const config = {
     targetId: 'player-placeholder',
     provider: {
-        partnerId: <your partner id>,
+        partnerId: <YOUR PARTBER ID>,
     },
     plugins: {
         'google-tag-manager': {},
@@ -39,11 +39,11 @@ Should be displayed on your admin tab in your [Google Tag Manager](https://tagma
 const config = {
   targetId: 'player-placeholder',
   provider: {
-    partnerId: <your partner id>,
+    partnerId: <YOUR PARTBER ID>,
   },
   plugins: {
     'google-tag-manager': {
-        containerId: <your container id>
+        containerId: <YOUR CONTAINER ID>
     },
   }
 };
@@ -62,7 +62,7 @@ const config = {
   plugins: {
     'google-tag-manager': {
         containerId: 'GTM-XXXXXXX',
-        costumeEvents: ['play', 'plaing', 'pause', 'seeked', ...]
+        costumeEvents: ['play', 'playing', 'pause', 'seeked', ...]
     },
   }
 };
