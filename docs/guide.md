@@ -54,7 +54,7 @@ const player = KalturaPlayer.setup(config);
 
 ### Triggering and listening to costume events
 
-In order to listen to player costume events - just pass string array to the plugin config
+In order to listen to player costume events - just pass string array of event types to the plugin config
 
 ```js
 const config = {
@@ -69,6 +69,10 @@ const config = {
 };
 ```
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
+
+In order get the our costume event payload under the `Value` field in `Tag Configuration` tab,
+Go to **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
+under the **Data Layer Variable Name**  field.
 
 ### Triggering elements clicks
 
