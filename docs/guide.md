@@ -78,8 +78,8 @@ In order to set the costume event payload as the value of the **Value** field in
 
 Open your [Google Tag Manager](https://tagmanager.google.com) Workspace.
 
-Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
-under the **Data Layer Variable Name**  field.
+Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and set the string`'payload'`
+as the value of the **Data Layer Variable Name**  field.
 
 Now, you can select thet variable from the list in the `Value` field on the `Tag Configuration` tab.
 
