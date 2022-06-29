@@ -3,8 +3,8 @@
 - [Getting started](#getting-started)
   - [First step: setup](#first-step-setup)
   - [Second step: configure your container id](#configure-your-container-id)
-- [Triggering costume events](#triggering-and-listening-to-costume-events)
-- [Triggering Elements Clicks](#triggering-elements-clicks)
+- [Triggering Player Costume Events](#triggering-player-costume-events)
+- [Triggering Player UI Elements Clicks](#triggering-elements-clicks)
 ## Getting started
 
 ### First step: setup
@@ -52,7 +52,7 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Triggering and listening to costume events
+### Triggering player costume events
 
 In order to listen to player costume events - just pass string array of event types to the plugin config
 
@@ -70,20 +70,23 @@ const config = {
 ```
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
 
-In order get our costume event payload under the `Value` field in `Tag Configuration` tab,
+In order get our costume event payload under the **Value** field in **Tag Configuration** tab,
+
 Open your [Google Tag Manager](https://tagmanager.google.com) Workspace,
+
 Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
 under the **Data Layer Variable Name**  field.
 
-Now, you can select thet variable from the list in `Value` field in the `Tag Configuration` tab.
+Now, you can select thet variable from the list in the `Value` field on the `Tag Configuration` tab.
 
 
 
-### Triggering elements clicks
+### Triggering player UI elements clicks
 
-In order to trigger Some Player Elements Clicks when condition of CSS selectors are true, 
-You should only use the 'Click Classes' option of the conditions list, out elements do not contain
-id's selector but only css classes
+In order to trigger Some Player Elements Clicks when condition of CSS selectors are true,
+You should use the 'Click Classes' option of the conditions list. 
+
+Player elements do not contain id's selector but only css classes.
 
 ![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashborrd-Trigger-Configuration.png)
 
@@ -91,12 +94,12 @@ id's selector but only css classes
 
 | Control Element | Class Name                                                                                 |
 | ---------- | ----------------------------------------------------------------------------------------------- |
+| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
 | **PLAY**                              | `playkit-icon-play`                                                  |
 | **PAUSE**                             | `playkit-icon-pause`                                                 |
-| **PLAY**                              | `playkit-icon-rewind-10`                                             |
-| **PAUSE**                             | `playkit-icon-forward-10`                                            |
+| **REWIND**                            | `playkit-icon-rewind-10`                                             |
+| **FORWARD**                           | `playkit-icon-forward-10`                                            |
 | **VOLUME / MUTE**                     | `playkit-icon-volume-mute`                                           |
-| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
 | **SETTINGS**                          | `playkit-icon-settings`                                              |
 | **PICTURE IN PICTURE**                | `playkit-control-picture-in-picture`                                 |
 | **PICTURE IN PICTURE / START**        | `playkit-icon-picture-in-picture-star`                               |
@@ -104,7 +107,7 @@ id's selector but only css classes
 | **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                              |
 | **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
 
-If you wnat to capture all player control just pass `playkit-icon` class
+If you wnat to capture all player control just pass `playkit-icon` class.
 
 ## Full example
 
