@@ -2,9 +2,11 @@
 
 - [Getting started](#getting-started)
   - [First step: setup](#first-step-setup)
-  - [Second step: configure your container id](#configure-your-container-id)
+  - [Second step: configure your container id](#second-step:-configure-your-container-id)
+- [Using Data Layer Variables](#Using Data Layer Variables)
 - [Triggering Player Costume Events](#triggering-player-costume-events)
-- [Triggering Player UI Elements Clicks](#triggering-elements-clicks)
+- [Triggering Player UI Elements Clicks](#triggering-player-ui-elements-clicks)
+- [CSS Elements Selectors List](#Use the following css class selectors:)
 ## Getting started
 
 ### First step: setup
@@ -70,9 +72,11 @@ const config = {
 ```
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
 
-In order get our costume event payload under the **Value** field in **Tag Configuration** tab,
+### Using Data Layer Variables
 
-Open your [Google Tag Manager](https://tagmanager.google.com) Workspace,
+In order to set the costume event payload as the value of the **Value** field in **Tag Configuration** tab, follow these steps:
+
+Open your [Google Tag Manager](https://tagmanager.google.com) Workspace.
 
 Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and then put the string`'payload'`
 under the **Data Layer Variable Name**  field.
