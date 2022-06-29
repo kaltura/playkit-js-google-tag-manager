@@ -2,8 +2,8 @@
 
 - [Getting started](#getting-started)
   - [First step: setup](#first-step-setup)
-  - [Second step: configure your container id](#second-step:-configure-your-container-id)
-- [Using Data Layer Variables](#Using Data Layer Variables)
+  - [Second step: configure your container id](#second-step-configure-your-container-id)
+- [Using Data Layer Variables](#Using-Data-Layer-Variables)
 - [Triggering Player Costume Events](#triggering-player-costume-events)
 - [Triggering Player UI Elements Clicks](#triggering-player-ui-elements-clicks)
 - [CSS Elements Selectors List](#Use the following css class selectors:)
