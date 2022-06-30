@@ -1,7 +1,7 @@
 import { BasePlugin, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
 import { HEAD_TAG, BODY_TAG } from './gtm-tags';
 
-export const pluginName = 'google-tag-manager';
+export const pluginName = 'googleTagManager';
 
 export interface GoogleTagManagerConfig {
   containerId: string;

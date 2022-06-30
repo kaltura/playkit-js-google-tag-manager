@@ -4,7 +4,9 @@
 
 # playkit-js-google-tag-manager
 
-playkit-js-google-tag-manager is a [kaltura player] plugin that integrates [Google Tag Manager] with [kaltura player]
+playkit-js-google-tag-manager is a [kaltura player] plugin that adds building support for [Google Tag Manager] in the [kaltura player]
+
+The plugin enables your website or app to communicate with the the Google Tag Manager servers, and manage your tags from your [Google Tag Manager] dashbored
 
 It relies on [kaltura player] core API for managing UI features.
 
@@ -19,6 +21,8 @@ and transpiled in ECMAScript5 using [Babel](https://babeljs.io/) and the [TypeSc
 [typescript]: https://www.typescriptlang.org/
 [typescript compiler]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 [webpack]: https://webpack.js.org/
+
+For more about Google Tag Manager, see [Google Tag Manager overview](https://support.google.com/tagmanager/answer/6102821?hl=en)
 
 ## Getting started with development
 
