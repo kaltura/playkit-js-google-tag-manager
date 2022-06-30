@@ -4,7 +4,7 @@
   - [First step: setup](#first-step-setup)
   - [Second step: configure your container id](#second-step-configure-your-container-id)
 - [Using Data Layer Variables](#Using-Data-Layer-Variables)
-- [Triggering Player Costume Events](#triggering-player-costume-events)
+- [Triggering Player Custom Events](#triggering-player-custom-events)
 - [Triggering Player UI Elements Clicks](#triggering-player-ui-elements-clicks)
 - [Player CSS Elements Selectors List](#Use-the-following-css-class-selectors)
 ## Getting started
@@ -54,9 +54,9 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Triggering player costume events
+### Triggering player custom events
 
-In order to listen to player costume events - just pass string array of event types to the plugin config
+In order to listen to player custom events - just pass string array of event types to the plugin config
 
 ```js
 const config = {
@@ -65,7 +65,7 @@ const config = {
   plugins: {
     'google-tag-manager': {
         containerId: 'GTM-XXXXXXX',
-        costumeEvents: ['play', 'playing', 'pause', 'seeked', ...]
+        customEvents: ['play', 'playing', 'pause', 'seeked', ...]
     },
   }
 };
@@ -74,7 +74,7 @@ const config = {
 
 ### Using Data Layer Variables
 
-In order to set the costume event payload as the value of the **Value** field in **Tag Configuration** tab, follow these steps:
+In order to set the custom event payload as the value of the **Value** field in **Tag Configuration** tab, follow these steps:
 
 Open your [Google Tag Manager](https://tagmanager.google.com) Workspace.
 
@@ -96,14 +96,22 @@ Player elements do not contain id's selector but only css classes.
 
 #### Use the following css class selectors:
 
+<script>
+function myFunction(value) {
+  navigator.clipboard.writeText(value);
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
 | Control Element | Class Name                                                                                 |
 | ---------- | ----------------------------------------------------------------------------------------------- |
-| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
+| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         <button onclick="myFunction('fff')">Copy text</button>
 | **PLAY**                              | `playkit-icon-play`                                                  |
 | **PAUSE**                             | `playkit-icon-pause`                                                 |
 | **REWIND**                            | `playkit-icon-rewind-10`                                             |
 | **FORWARD**                           | `playkit-icon-forward-10`                                            |
 | **VOLUME / MUTE**                     | `playkit-icon-volume-mute`                                           |
+| **LANGUAGE**                          | `playkit-icon-language`                                              |
 | **SETTINGS**                          | `playkit-icon-settings`                                              |
 | **PICTURE IN PICTURE**                | `playkit-control-picture-in-picture`                                 |
 | **PICTURE IN PICTURE / START**        | `playkit-icon-picture-in-picture-star`                               |
@@ -112,6 +120,8 @@ Player elements do not contain id's selector but only css classes.
 | **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
 
 If you wnat to capture all player control just pass `playkit-icon` class.
+
+<button onclick="myFunction()">Copy text</button>
 
 ## Full example
 
