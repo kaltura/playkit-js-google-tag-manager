@@ -5,7 +5,7 @@ export const pluginName = 'googleTagManager';
 
 export interface GoogleTagManagerConfig {
   containerId: string;
-  costumeEvents: string[];
+  customEvents: string[];
 }
 
 export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
@@ -46,7 +46,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private initCostumeEventsListeners(): void {
-    this.config.costumeEvents.forEach((event) => {
+    this.config.customEvents.forEach((event) => {
       this.eventManager.listen(this.player, event, (event: FakeEvent) => {
         window.dataLayer.push({ event: event.type, payload: event.payload });
       });

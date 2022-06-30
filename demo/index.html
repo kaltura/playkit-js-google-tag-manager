@@ -18,9 +18,9 @@
           autoplay: true
         },
         plugins: {
-          'googleTagManager': {
-            containerId: 'GTM-TR9QJT9'
-            // containerId: '<YOUR CONTAINER ID>' // formatted as GTM-XXXXXX
+          'google-tag-manager': {
+            containerId: '<YOUR CONTAINER ID>', // formatted as GTM-XXXXXX
+            customEvents: ['play', 'pause', 'seeked']
           },
         }
       };
