@@ -81,7 +81,7 @@ Open your [Google Tag Manager](https://tagmanager.google.com) Workspace.
 Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and set the string`'payload'`
 as the value of the **Data Layer Variable Name**  field.
 
-Now, you can select thet variable from the list in the `Value` field on the `Tag Configuration` tab.
+Now, you can select that variable from the list in the `Value` field on the `Tag Configuration` tab.
 
 
 
@@ -112,7 +112,7 @@ Player elements do not contain id's selector but only css classes.
 | **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                              |
 | **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
 
-If you want to capture all player control just pass `playkit-icon` class.
+If you want to capture all player controls just pass the `playkit-icon` class.
 
 ## Full example
 
