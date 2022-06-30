@@ -96,16 +96,9 @@ Player elements do not contain id's selector but only css classes.
 
 #### Use the following css class selectors:
 
-<script>
-function myFunction(value) {
-  navigator.clipboard.writeText(value);
-  alert("Copied the text: " + copyText.value);
-}
-</script>
-
 | Control Element | Class Name                                                                                 |
 | ---------- | ----------------------------------------------------------------------------------------------- |
-| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         <button onclick="myFunction('fff')">Copy text</button>
+| **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
 | **PLAY**                              | `playkit-icon-play`                                                  |
 | **PAUSE**                             | `playkit-icon-pause`                                                 |
 | **REWIND**                            | `playkit-icon-rewind-10`                                             |
@@ -119,9 +112,7 @@ function myFunction(value) {
 | **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                              |
 | **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
 
-If you wnat to capture all player control just pass `playkit-icon` class.
-
-<button onclick="myFunction()">Copy text</button>
+If you want to capture all player control just pass `playkit-icon` class.
 
 ## Full example
 
