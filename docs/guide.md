@@ -4,8 +4,8 @@
   - [First step: setup](#first-step-setup)
   - [Second step: configure your container id](#second-step-configure-your-container-id)
 - [Using Data Layer Variables](#Using-Data-Layer-Variables)
-- [Triggering Player Custom Events](#triggering-player-custom-events)
-- [Triggering Player UI Elements Clicks](#triggering-player-ui-elements-clicks)
+- [Tracking Player Custom Events](#tracking-player-custom-events)
+- [Tracking Player UI Elements Clicks](#tracking-player-ui-elements-clicks)
 - [Player CSS Elements Selectors List](#Use-the-following-css-class-selectors)
 ## Getting started
 
@@ -54,9 +54,9 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Triggering player custom events
+### Tracing player custom events
 
-In order to listen to player custom events - just pass string array of event types to the plugin config
+In order to track player custom events - just pass string array of event types to the plugin config
 
 ```js
 const config = {
@@ -85,12 +85,12 @@ Now, you can select that variable from the list in the `Value` field on the `Tag
 
 
 
-### Triggering player UI elements clicks
+### Tracking player UI elements clicks
 
-In order to trigger Some Player Elements Clicks when condition of CSS selectors are true,
+In order to track some Player elements Clicks when condition of CSS selectors are true,
 You should use the 'Click Classes' option of the conditions list. 
 
-Player elements do not contain id's selector but only css classes.
+Player elements are identified by css class selectors. (Player elements do not contain id selectors).
 
 ![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashborrd-Trigger-Configuration.png)
 

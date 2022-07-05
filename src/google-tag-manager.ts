@@ -10,21 +10,21 @@ export interface GoogleTagManagerConfig {
 
 export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   protected static defaultConfig = {
-    costumeEvents: []
+    customEvents: []
   };
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
     if (this.config.containerId) {
       this.loadTag();
-      this.initCostumeEventsListeners();
+      this.initCustomEventsListeners();
     } else {
       this.logger.error('No container ID provided. Tracking aborted');
     }
   }
 
   private loadTag(): void {
-    if (this.config.containerId && !document.getElementById(`kaltura-${this.config.containerId}`)) {
+    if (this.config.containerId.match(/^GTM-[A-Z1-9]{7}$/) && !document.getElementById(`kaltura-${this.config.containerId}`)) {
       // Adds the header tag
       const headScript = document.createElement('script');
       const headScriptCode = document.createTextNode(HEAD_TAG.replace('GTM-XXXXXX', this.config.containerId));
@@ -45,9 +45,9 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     }
   }
 
-  private initCostumeEventsListeners(): void {
-    this.config.customEvents.forEach((event) => {
-      this.eventManager.listen(this.player, event, (event: FakeEvent) => {
+  private initCustomEventsListeners(): void {
+    this.config.customEvents.forEach((customEvent) => {
+      this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
         window.dataLayer.push({ event: event.type, payload: event.payload });
       });
     });
