@@ -15,6 +15,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
+    // eslint-disable-next-line no-console
+    console.log('gtm created');
     if (this.config.containerId) {
       this.loadTag();
       this.initCustomEventsListeners();
@@ -51,14 +53,6 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
         window.dataLayer.push({ event: event.type, payload: event.payload });
       });
     });
-  }
-
-  public reset(): void {
-    return;
-  }
-
-  public destroy(): void {
-    this.reset();
   }
 
   public static isValid(): boolean {
