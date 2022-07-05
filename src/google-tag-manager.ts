@@ -15,9 +15,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
-    // eslint-disable-next-line no-console
-    console.log('gtm created');
-    if (this.config.containerId) {
+    if (this.config.containerId.match(/^GTM-[A-Z1-9]{7}$/)) {
       this.loadTag();
       this.initCustomEventsListeners();
     } else {
@@ -26,7 +24,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private loadTag(): void {
-    if (this.config.containerId.match(/^GTM-[A-Z1-9]{7}$/) && !document.getElementById(`kaltura-${this.config.containerId}`)) {
+    if (!document.getElementById(`kaltura-${this.config.containerId}`)) {
       // Adds the header tag
       const headScript = document.createElement('script');
       const headScriptCode = document.createTextNode(HEAD_TAG.replace('GTM-XXXXXX', this.config.containerId));
@@ -44,6 +42,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       const template = document.createElement('template');
       template.innerHTML = BODY_TAG.replace('GTM-XXXXXX', this.config.containerId);
       document.body.prepend(template.content);
+    } else {
+      this.logger.warn('GTM Tag was already loaded');
     }
   }
 
