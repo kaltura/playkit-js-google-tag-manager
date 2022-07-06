@@ -75,15 +75,30 @@ const config = {
 
 ### Using Data Layer Variables
 
-In order to set the custom event payload as the value of the **Value** field in **Tag Configuration** tab, follow these steps:
+Our Player Custom Events payload are available as [Data Layer Variable](https://support.google.com/tagmanager/answer/6164391?hl=en)
 
-Open your [Google Tag Manager](https://tagmanager.google.com) Workspace.
+The Data Layer Variable **key** would always be at the pattern of Custom Event Name concatenated with the string `-payload`
 
-Go to: **Variables > User-Defined Variables > New > Choose variable type > Data Layer Variable** , and set the string`'payload'`
-as the value of the **Data Layer Variable Name**  field.
+For example: `play-payload` / `seeked-payload` / `sourceselectd-payload` and so on.
 
-Now, you can select that variable from the list in the `Value` field on the `Tag Configuration` tab.
+**Note:** not all player custom events have a payload, in that case, the value would be _undefined_
 
+**Set up the data layer variable**
+
+Once you have the key that you would like to work with, you can proceed to create a data layer variable:
+
+Open your [Google Tag Manager](https://tagmanager.google.com) Workspace and follow these steps:
+
+1. Click **Variables**.
+2. Under **User-Defined Variables**, click **New**.
+3. Click **Variable Configuration** and select **Data Layer Variable** as the variable type.
+4. In the **Data Layer Variable Name** field,  click in + button and choose the **Custom Event** **Built-In Variable** add suffix with the stirng `-payload`
+5. In most cases you should leave the **Data Layer Version** set to the default value of Version 2. Learn more.
+6. Save the variable.
+
+![Screen-Shot-GTM-Dashborrd-Data-Layer-Variable](./images/Screen-Shot-GTM-Dashborrd-Data-Layer-Variable.png)
+
+Now you can use that Variable everywhere in your tag configuration
 
 
 ### Tracking player UI elements clicks
