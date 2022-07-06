@@ -75,7 +75,8 @@ const config = {
 
 ### Using Data Layer Variables
 
-Our Player Custom Events payload are available as [Data Layer Variable](https://support.google.com/tagmanager/answer/6164391?hl=en)
+Our Player Custom Events payload are available as [Data Layer Variable](https://support.google.com/tagmanager/answer/6164391?hl=en), 
+in order to use them, you would just need to set **Data Layer Variable** one time! with dynamic key as explained bellow.
 
 The Data Layer Variable **key** would always be at the pattern of Custom Event Name concatenated with the string `-payload`
 
@@ -84,8 +85,6 @@ For example: `play-payload` / `seeked-payload` / `sourceselectd-payload` and so 
 **Note:** not all player custom events have a payload, in that case, the value would be _undefined_
 
 **Set up the data layer variable**
-
-Once you have the key that you would like to work with, you can proceed to create a data layer variable:
 
 Open your [Google Tag Manager](https://tagmanager.google.com) Workspace and follow these steps:
 
