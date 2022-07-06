@@ -21,7 +21,7 @@ and transpiled in ECMAScript5 using [Babel](https://babeljs.io/) and the [TypeSc
 [typescript compiler]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 [webpack]: https://webpack.js.org/
 
-For more about Google Tag Manager, see [Google Tag Manager overview](https://support.google.com/tagmanager/answer/6102821?hl=en)
+For more information about Google Tag Manager, see [Google Tag Manager overview](https://support.google.com/tagmanager/answer/6102821?hl=en)
 
 ## Getting started with development
 
