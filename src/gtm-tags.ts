@@ -1,7 +1,3 @@
-/*
-   These tags have been copied from
-   https://tagmanager.google.com/#/admin/accounts/1111673187/containers/68727907/install?containerDraftId=9
-*/
 export const HEAD_TAG = `
 (function(w, d, s, l, i) {
     w[l] = w[l] || [];
