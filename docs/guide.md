@@ -91,8 +91,9 @@ Open your [Google Tag Manager](https://tagmanager.google.com) Workspace and foll
 1. Click **Variables**.
 2. Under **User-Defined Variables**, click **New**.
 3. Click **Variable Configuration** and select **Data Layer Variable** as the variable type.
-4. In the **Data Layer Variable Name** field,  click in + button and choose the **Custom Event** **Built-In Variable** add suffix with the stirng `-payload`
-5. In most cases you should leave the **Data Layer Version** set to the default value of Version 2. Learn more.
+4. In the **Data Layer Variable Name** field,  click on the '**+**' icon and select the **Custom Event** Built-In Variable and add add the suffix `-payload` to the variable name
+   ![Screen-Shot-GTM-Dashborrd-Data-Layer-Variable-Suffix.png](./images/Screen-Shot-GTM-Dashborrd-Data-Layer-Variable-Suffix.png)
+5. In most cases you should leave the **Data Layer Version** set to the default value of Version 2.
 6. Save the variable.
 
 ![Screen-Shot-GTM-Dashborrd-Data-Layer-Variable](./images/Screen-Shot-GTM-Dashborrd-Data-Layer-Variable.png)
@@ -107,8 +108,6 @@ You should use the 'Click Classes' option of the conditions list.
 
 Player elements are identified by css class selectors. (Player elements do not contain id selectors).
 
-![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashborrd-Trigger-Configuration.png)
-
 #### Use the following css class selectors:
 
 | Control Element | Class Name                                                                                 |
@@ -116,6 +115,7 @@ Player elements are identified by css class selectors. (Player elements do not c
 | **PLAY / PAUSE**                      | `playkit-control-play-pause`                                         |
 | **PLAY**                              | `playkit-icon-play`                                                  |
 | **PAUSE**                             | `playkit-icon-pause`                                                 |
+| **REPLAY**                             | `playkit-icon-start-over`                                                 |
 | **REWIND**                            | `playkit-icon-rewind-10`                                             |
 | **FORWARD**                           | `playkit-icon-forward-10`                                            |
 | **VOLUME / MUTE**                     | `playkit-icon-volume-mute`                                           |
@@ -124,10 +124,21 @@ Player elements are identified by css class selectors. (Player elements do not c
 | **PICTURE IN PICTURE**                | `playkit-control-picture-in-picture`                                 |
 | **PICTURE IN PICTURE / START**        | `playkit-icon-picture-in-picture-star`                               |
 | **PICTURE IN PICTURE / STOP**         | `playkit-icon-picture-in-picture-stop`                               |
-| **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                              |
-| **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                              |
+| **FULLSCREEN / MAXIMIZE**             | `playkit-icon-maximize`                                             |
+| **FULLSCREEN / MINIMIZE**             | `playkit-icon-minimize`                                        |
 
-If you want to capture all player controls just pass the `playkit-icon` class.
+For capturing all player controls clicks -select the 'contains' or 'start with' condition from the conditions and pass the `playkit-icon` class as the value.
+
+ **Example - Single Selection**
+
+![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashboard-Trigger-Configuration-Single-Control.png)
+
+**Example - Multiple Selection**
+
+![Screen-Shot-GTM-Dashborrd-Trigger-Configuration](./images/Screen-Shot-GTM-Dashboard-Trigger-Configuration-All-Controls.png)
+
+
+
 
 ## Full example
 
