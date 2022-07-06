@@ -70,7 +70,8 @@ const config = {
   }
 };
 ```
-**The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)**
+**The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)** \
+**Ads events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/ads/ad-event-type.js)**
 
 ### Using Data Layer Variables
 

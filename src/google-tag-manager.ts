@@ -50,7 +50,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   private initCustomEventsListeners(): void {
     this.config.customEvents.forEach((customEvent) => {
       this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
-        window.dataLayer.push({ event: event.type, payload: event.payload });
+        const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
+        window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
       });
     });
   }
