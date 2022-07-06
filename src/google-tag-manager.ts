@@ -19,7 +19,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       this.loadTag();
       this.initCustomEventsListeners();
     } else {
-      this.logger.error('No container ID provided. Tracking aborted');
+      this.logger.error('Invalid container ID provided. Tracking aborted');
     }
   }
 

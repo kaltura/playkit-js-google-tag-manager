@@ -1,15 +1,15 @@
 # Usage guide
 
 - [Getting started](#getting-started)
-  - [First step: setup](#first-step-setup)
-  - [Second step: configure your container id](#second-step-configure-your-container-id)
+  - [Setup](#first-step-setup)
+  - [Configuration](#second-step-configure-your-container-id)
 - [Using Data Layer Variables](#Using-Data-Layer-Variables)
 - [Tracking Player Custom Events](#tracking-player-custom-events)
 - [Tracking Player UI Elements Clicks](#tracking-player-ui-elements-clicks)
 - [Player CSS Elements Selectors List](#Use-the-following-css-class-selectors)
 ## Getting started
 
-### First step: setup
+### Setup
 
 First include the plugin script bundle **after** kaltura-player script in your web page.
 
@@ -18,7 +18,7 @@ First include the plugin script bundle **after** kaltura-player script in your w
 <script src="./playkit-google-tag-manager.js"></script>
 ```
 
-Add the plugin name to the player config under the plugins section along with the rest of plugins.
+Add the plugin name (`googleTagManager`) to the player config under the plugins section along with the rest of plugins.
 
 ```js
 const config = {
@@ -27,16 +27,18 @@ const config = {
         partnerId: <YOUR PARTBER ID>,
     },
     plugins: {
-        'google-tag-manager': {},
+       googleTagManager: {},
     }
   };
 
 const player = KalturaPlayer.setup(config);
 ```
 
-### Second step: configure your container id
+### Configuration
 
-Should be displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard (formatted as GTM-XXXXXX)
+Configure your container id
+
+The container id is displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard (formatted as GTM-XXXXXX)
 
 ```js
 const config = {
@@ -45,7 +47,7 @@ const config = {
     partnerId: <YOUR PARTBER ID>,
   },
   plugins: {
-    'google-tag-manager': {
+        googleTagManager: {
         containerId: <YOUR CONTAINER ID>
     },
   }
@@ -63,7 +65,7 @@ const config = {
     ...
   },
   plugins: {
-    'google-tag-manager': {
+      googleTagManager: {
         containerId: 'GTM-XXXXXXX',
         customEvents: ['play', 'playing', 'pause', 'seeked', ...]
     },
@@ -106,7 +108,7 @@ Now you can use that Variable everywhere in your tag configuration
 In order to track some Player elements Clicks when condition of CSS selectors are true,
 You should use the 'Click Classes' option of the conditions list. 
 
-Player elements are identified by css class selectors. (Player elements do not contain id selectors).
+Player elements are identified by css class selectors. (The Player elements do not contain id selectors).
 
 #### Use the following css class selectors:
 
