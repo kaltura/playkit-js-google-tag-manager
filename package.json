@@ -24,7 +24,7 @@
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "test": "echo \"no test specified\" && exit 0",
-    "types:check": "tsc src/index.ts src/services/types/global.d.ts --noEmit --target ESNext --moduleResolution node",
+    "types:check": "tsc src/index.ts src/types/global.d.ts --noEmit --target ESNext --moduleResolution node",
     "lint:check": "eslint src --ext .ts --color",
     "lint:fix": "npm run lint:check -- --fix",
     "prettier:fix": "prettier --write .",

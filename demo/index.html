@@ -2,14 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>UI Managers</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Playkit Google Tag Manager</title>
     <script src="https://raw.githack.com/kaltura/kaltura-player-js/master/dist/kaltura-ovp-player.js"></script>
     <script src="./playkit-google-tag-manager.js"></script>
   </head>
   <body>
     <div id="player-placeholder" style="width: 640px; height: 360px"></div>
-    <script type="javascript">
+    <script type="text/javascript">
 
       const config = {
         logLevel: 'DEBUG',
@@ -19,8 +18,9 @@
           autoplay: true
         },
         plugins: {
-          'google-tag-manager': {
-            containerId: '<YOUR CONTAINER ID>' // formatted as GTM-XXXXXX
+          googleTagManager: {
+            containerId: '<YOUR CONTAINER ID>', // formatted as GTM-XXXXXX
+            customEvents: ['play', 'pause', 'seeked', 'sourceselected']
           },
         }
       };
@@ -38,6 +38,7 @@
           ]
         }
       });
+
     </script>
   </body>
 </html>
