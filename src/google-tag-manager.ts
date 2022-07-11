@@ -19,10 +19,10 @@ export interface GoogleTagManagerConfig {
 }
 
 export const eventTypesMap: { [presetOption: string]: keyof EventTypes } = {
-  castEvents: 'Cast',
   coreEvents: 'Core',
+  UIEvents: 'UI',
   playlistEvents: 'Playlist',
-  UIEvents: 'UI'
+  castEvents: 'Cast'
 };
 
 export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
@@ -87,7 +87,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
                 this.player.Event.Core.TIME_UPDATE,
                 this.player.Event.Core.PROGRESS,
                 this.player.Event.Core.FPS_DROP,
-                this.player.Event.Core.FRAG_LOADED
+                this.player.Event.Core.FRAG_LOADED,
+                this.player.Event.Core.AD_PROGRESS
               ].includes(customEvent)
             ) {
               this.trackCustomEvent(customEvent);
