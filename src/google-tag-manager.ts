@@ -1,22 +1,8 @@
 import { BasePlugin, EventTypes, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
 import { HEAD_TAG, BODY_TAG } from './gtm-tags';
+import { GoogleTagManagerConfig } from './models/google-tag-manager-config';
 
 export const pluginName = 'googleTagManager';
-
-export type PresetOption = keyof GoogleTagManagerConfig['customEventsTracking']['preset'];
-
-export interface GoogleTagManagerConfig {
-  containerId: string;
-  customEventsTracking: {
-    custom: string[];
-    preset: {
-      coreEvents: boolean;
-      UIEvents: boolean;
-      playlistEvents: boolean;
-      castEvents: boolean;
-    };
-  };
-}
 
 export const eventTypesMap: { [presetOption: string]: keyof EventTypes } = {
   coreEvents: 'Core',
@@ -81,18 +67,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       if (isTrackEnabled) {
         const eventType = eventTypesMap[presetOption];
         Object.values(this.player.Event[eventType]).forEach((customEvent) => {
-          if (!this.config.customEventsTracking.custom.includes(customEvent)) {
-            if (
-              ![
-                this.player.Event.Core.TIME_UPDATE,
-                this.player.Event.Core.PROGRESS,
-                this.player.Event.Core.FPS_DROP,
-                this.player.Event.Core.FRAG_LOADED,
-                this.player.Event.Core.AD_PROGRESS
-              ].includes(customEvent)
-            ) {
-              this.trackCustomEvent(customEvent);
-            }
+          if (this.isNotAlreadyExistInTheCustomList(customEvent) && this.isNotBlockedEvent(customEvent)) {
+            this.trackCustomEvent(customEvent);
           }
         });
       }
@@ -104,6 +80,20 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
       window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
     });
+  }
+
+  private isNotAlreadyExistInTheCustomList(customEvent: string): boolean {
+    return !this.config.customEventsTracking.custom.includes(customEvent);
+  }
+
+  private isNotBlockedEvent(customEvent: string): boolean {
+    return ![
+      this.player.Event.Core.TIME_UPDATE,
+      this.player.Event.Core.PROGRESS,
+      this.player.Event.Core.FPS_DROP,
+      this.player.Event.Core.FRAG_LOADED,
+      this.player.Event.Core.AD_PROGRESS
+    ].includes(customEvent);
   }
 
   public static isValid(): boolean {
