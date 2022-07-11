@@ -47,8 +47,8 @@ const config = {
     partnerId: <YOUR PARTBER ID>,
   },
   plugins: {
-        googleTagManager: {
-        containerId: <YOUR CONTAINER ID>
+    googleTagManager: {
+      containerId: <YOUR CONTAINER ID>
     },
   }
 };
@@ -58,20 +58,59 @@ const player = KalturaPlayer.setup(config);
 
 ### Tracing player custom events
 
-In order to track player custom events - just pass string array of event types to the plugin config
+In order to track player custom events - you have two configuration options
+1. Create your own custom list
+2. Listen to a bunch of events at once classified by event type, as following:
+   - Core Events 
+   - UI Events 
+   - Playlist Events, 
+   - Cast Events
 
+
+   Of cores, you can combine both.
+
+**Custom list configuration option**
+
+Just pass string array of event names:
 ```js
 const config = {
     ...
   },
   plugins: {
-      googleTagManager: {
-        containerId: 'GTM-XXXXXXX',
-        customEvents: ['play', 'playing', 'pause', 'seeked', ...]
-    },
+    googleTagManager: {
+      containerId: 'GTM-XXXXXXX',
+      customEventsTracking: {
+        custom: ['play', 'pause', 'seeked', 'sourceselected']
+      },
+    }
   }
 };
 ```
+
+**Preset lists configuration option**
+
+Just pass string array of event names:
+```js
+const config = {
+    ...
+  },
+  plugins: {
+    googleTagManager: {
+      containerId: 'GTM-XXXXXXX',
+      customEventsTracking: {
+        custom: ['play', 'pause', 'seeked', 'sourceselected'],
+        preset: {
+           coreEvents: false,
+           UIEvents: false,
+           playlistEvents: true,                   
+           castEvents: false                                  
+        }
+      },
+    }
+  }
+};
+```
+
 **The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)** \
 **Ads events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/ads/ad-event-type.js)**
 
