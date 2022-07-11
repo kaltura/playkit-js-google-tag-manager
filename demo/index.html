@@ -20,7 +20,12 @@
         plugins: {
           googleTagManager: {
             containerId: '<YOUR CONTAINER ID>', // formatted as GTM-XXXXXX
-            customEvents: ['play', 'pause', 'seeked', 'sourceselected']
+            customEventsTracking: {
+              custom: ['play', 'pause', 'seeked', 'sourceselected'],
+              preset: {
+                coreEvents: true
+              }
+            }
           },
         }
       };
@@ -38,7 +43,6 @@
           ]
         }
       });
-
     </script>
   </body>
 </html>
