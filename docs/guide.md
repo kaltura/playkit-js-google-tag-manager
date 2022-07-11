@@ -56,18 +56,21 @@ const config = {
 const player = KalturaPlayer.setup(config);
 ```
 
-### Tracing player custom events
+### Tracking player custom events
 
 In order to track player custom events - you have two configuration options
-1. Create your own custom list
-2. Listen to a bunch of events at once classified by event type, as following:
+
+1. Manually define list of events to track.
+2. Auto Track of all events from a particular events' class. 
+
+ The event classes are:
+
    - Core Events 
    - UI Events 
    - Playlist Events, 
    - Cast Events
-
-
-   Of cores, you can combine both.
+   
+   You can also combine both options.
 
 **Custom list configuration option**
 
@@ -89,7 +92,7 @@ const config = {
 
 **Preset lists configuration option**
 
-Just pass string array of event names:
+Just turn on the desired events class option (all are set to false by default):
 ```js
 const config = {
     ...
@@ -103,7 +106,7 @@ const config = {
            coreEvents: false,
            UIEvents: false,
            playlistEvents: true,                   
-           castEvents: false                                  
+           castEvents: true                                  
         }
       },
     }
