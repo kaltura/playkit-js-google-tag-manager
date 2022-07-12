@@ -59,20 +59,20 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private initCustomEventsListeners(): void {
-    this.config.customEventsTracking.custom.forEach((customEvent) => {
-      this.trackCustomEvent(customEvent);
-    });
+    // Prevents registering twice to the same event
+    const trackedEvents = new Set(this.config.customEventsTracking.custom);
 
     for (const [presetOption, isTrackEnabled] of Object.entries<boolean>(this.config.customEventsTracking.preset)) {
       if (isTrackEnabled) {
         const eventType = eventTypesMap[presetOption];
         Object.values(this.player.Event[eventType]).forEach((customEvent) => {
-          if (this.isNotAlreadyExistInTheCustomList(customEvent) && this.isNotBlockedEvent(customEvent)) {
-            this.trackCustomEvent(customEvent);
+          if (this.isNotHighFrequencyEvent(customEvent)) {
+            trackedEvents.add(customEvent);
           }
         });
       }
     }
+    trackedEvents.forEach((customEvent) => this.trackCustomEvent(customEvent));
   }
 
   private trackCustomEvent(customEvent: string): void {
@@ -82,11 +82,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     });
   }
 
-  private isNotAlreadyExistInTheCustomList(customEvent: string): boolean {
-    return !this.config.customEventsTracking.custom.includes(customEvent);
-  }
-
-  private isNotBlockedEvent(customEvent: string): boolean {
+  private isNotHighFrequencyEvent(customEvent: string): boolean {
     return ![
       this.player.Event.Core.TIME_UPDATE,
       this.player.Event.Core.PROGRESS,
