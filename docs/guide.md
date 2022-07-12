@@ -74,7 +74,7 @@ In order to track player custom events - you have two configuration options
 
 **Custom list configuration option**
 
-Just pass string array of event names:
+Pass string array of event names:
 ```js
 const config = {
     ...
