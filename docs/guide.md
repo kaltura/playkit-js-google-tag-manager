@@ -1,8 +1,8 @@
 # Usage guide
 
 - [Getting started](#getting-started)
-  - [Setup](#first-step-setup)
-  - [Configuration](#second-step-configure-your-container-id)
+  - [Setup](#Setup)
+  - [Configuration](#Configuration)
 - [Using Data Layer Variables](#Using-Data-Layer-Variables)
 - [Tracking Player Custom Events](#tracking-player-custom-events)
 - [Tracking Player UI Elements Clicks](#tracking-player-ui-elements-clicks)
@@ -65,14 +65,12 @@ In order to track player custom events - you have two configuration options
 
  The event categories are:
 
-   - Core Events 
-   - UI Events 
-   - Playlist Events, 
-   - Cast Events
+   - [Core Events](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)
+   - [UI Events](https://github.com/kaltura/playkit-js-ui/blob/master/docs/events.md)
+   - [Playlist Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/playlist/playlist-event-type.js)
+   - [Cast Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/cast/cast-event-type.js)
    
    You can also combine both options.
-
-[The full lists of Events can be found here](#The-full-list-of-events-can-be-found-here:)
 
 **Custom list configuration option**
 
@@ -116,13 +114,13 @@ const config = {
 };
 ```
 
-####The full list of events can be found here:
+#### The full list of events can be found here:
 
 **[Core Events](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)** \
 **[Ads Events](https://github.com/kaltura/playkit-js/blob/master/src/ads/ad-event-type.js)** \
+**[UI Events](https://github.com/kaltura/playkit-js-ui/blob/master/docs/events.md)** \
 **[Playlist Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/playlist/playlist-event-type.js)** \
-**[Cast Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/cast/cast-event-type.js)** \
-**[UI Events](https://github.com/kaltura/playkit-js-ui/blob/master/docs/events.md)** 
+**[Cast Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/cast/cast-event-type.js)**
 
 ### Using Data Layer Variables
 
