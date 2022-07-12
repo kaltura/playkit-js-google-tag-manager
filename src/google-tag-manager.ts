@@ -1,16 +1,27 @@
-import { BasePlugin, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
+import { BasePlugin, EventTypes, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
 import { HEAD_TAG, BODY_TAG } from './gtm-tags';
+import { GoogleTagManagerConfig } from './models/google-tag-manager-config';
 
 export const pluginName = 'googleTagManager';
 
-export interface GoogleTagManagerConfig {
-  containerId: string;
-  customEvents: string[];
-}
+export const eventTypesMap: { [presetOption: string]: keyof EventTypes } = {
+  coreEvents: 'Core',
+  UIEvents: 'UI',
+  playlistEvents: 'Playlist',
+  castEvents: 'Cast'
+};
 
 export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   protected static defaultConfig = {
-    customEvents: []
+    customEventsTracking: {
+      custom: [],
+      preset: {
+        coreEvents: false,
+        UIEvents: false,
+        playlistEvents: false,
+        castEvents: false
+      }
+    }
   };
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
@@ -48,12 +59,37 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private initCustomEventsListeners(): void {
-    this.config.customEvents.forEach((customEvent) => {
-      this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
-        const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
-        window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
-      });
+    // Prevents registering twice to the same event
+    const trackedEvents = new Set(this.config.customEventsTracking.custom);
+
+    for (const [presetOption, isTrackEnabled] of Object.entries<boolean>(this.config.customEventsTracking.preset)) {
+      if (isTrackEnabled) {
+        const eventType = eventTypesMap[presetOption];
+        Object.values(this.player.Event[eventType]).forEach((customEvent) => {
+          if (this.isNotHighFrequencyEvent(customEvent)) {
+            trackedEvents.add(customEvent);
+          }
+        });
+      }
+    }
+    trackedEvents.forEach((customEvent) => this.trackCustomEvent(customEvent));
+  }
+
+  private trackCustomEvent(customEvent: string): void {
+    this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
+      const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
+      window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
     });
+  }
+
+  private isNotHighFrequencyEvent(customEvent: string): boolean {
+    return ![
+      this.player.Event.Core.TIME_UPDATE,
+      this.player.Event.Core.PROGRESS,
+      this.player.Event.Core.FPS_DROP,
+      this.player.Event.Core.FRAG_LOADED,
+      this.player.Event.Core.AD_PROGRESS
+    ].includes(customEvent);
   }
 
   public static isValid(): boolean {

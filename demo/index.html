@@ -19,8 +19,16 @@
         },
         plugins: {
           googleTagManager: {
-            containerId: '<YOUR CONTAINER ID>', // formatted as GTM-XXXXXX
-            customEvents: ['play', 'pause', 'seeked', 'sourceselected']
+            containerId: '<YOUR CONTAINER ID>',                      // formatted as GTM-XXXXXX
+            customEventsTracking: {
+              custom: ['play', 'pause', 'seeked', 'sourceselected'], // Default = []
+              preset: {
+                coreEvents: false,                                   // Default = false
+                UIEvents: false,                                     // Default = false
+                playlistEvents: false,                               // Default = false
+                castEvents: false                                    // Default = false
+              }
+            }
           },
         }
       };
@@ -38,7 +46,6 @@
           ]
         }
       });
-
     </script>
   </body>
 </html>

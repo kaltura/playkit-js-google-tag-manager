@@ -32,6 +32,9 @@ git clone https://github.com/kaltura/playkit-js-google-tag-manager.git
 # Navigate to the repo dir
 cd playkit-js-google-tag-manager
 
+# Install dependencies
+npm install
+
 # Run dev-server for demo page (recompiles on file-watch, and write to actual dist fs artifacts)
 npm run dev
 
@@ -41,7 +44,7 @@ npm run pre:commit
 # this command will run type and lint checks
 ```
 
-The dev server will host files on port 8000. Once started, the demo can be found running at http://localhost:8000/.
+The dev server will host files on port 8080. Once started, the demo can be found running at http://localhost:8000/.
 
 Before submitting a PR, please see our [contribution guidelines](CONTRIBUTING.md).
 
