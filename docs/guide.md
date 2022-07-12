@@ -72,6 +72,8 @@ In order to track player custom events - you have two configuration options
    
    You can also combine both options.
 
+[The full lists of Events can be found here](#The-full-list-of-events-can-be-found-here:)
+
 **Custom list configuration option**
 
 Pass string array of event names:
@@ -114,8 +116,13 @@ const config = {
 };
 ```
 
-**The full list of events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)** \
-**Ads events can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/ads/ad-event-type.js)**
+####The full list of events can be found here:
+
+**[Core Events](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js)** \
+**[Ads Events](https://github.com/kaltura/playkit-js/blob/master/src/ads/ad-event-type.js)** \
+**[Playlist Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/playlist/playlist-event-type.js)** \
+**[Cast Events](https://github.com/kaltura/kaltura-player-js/blob/master/src/common/cast/cast-event-type.js)** \
+**[UI Events](https://github.com/kaltura/playkit-js-ui/blob/master/docs/events.md)** 
 
 ### Using Data Layer Variables
 
@@ -148,7 +155,9 @@ Now you can use that Variable everywhere in your tag configuration
 ### Tracking player UI elements clicks
 
 In order to track some Player elements Clicks when condition of CSS selectors are true,
-You should use the 'Click Classes' option of the conditions list. 
+You should use the **Click Classes** option of the conditions list.
+
+(If you do not see the **Click Classes** option, you should add it through the **Variables** tab - go to **Variables > Built-In Variables > Configure** and select **Click Classes** from the list)
 
 Player elements are identified by css class selectors. (The Player elements do not contain id selectors).
 
