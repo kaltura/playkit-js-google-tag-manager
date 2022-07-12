@@ -60,10 +60,10 @@ const player = KalturaPlayer.setup(config);
 
 In order to track player custom events - you have two configuration options
 
-1. Manually define list of events to track.
-2. Auto Track of all events from a particular events' class. 
+1. Define your own list of events.
+2. Track all events from a particular events' category. 
 
- The event classes are:
+ The event categories are:
 
    - Core Events 
    - UI Events 
@@ -94,7 +94,7 @@ const config = {
 
 **Preset lists configuration option**
 
-Just turn on the desired events class option (all are set to false by default):
+Just turn on the desired events category option (all are set to false by default):
 ```js
 const config = {
     ...
@@ -103,10 +103,10 @@ const config = {
     googleTagManager: {
       containerId: 'GTM-XXXXXXX',
       customEventsTracking: {
-        custom: ['play', 'pause', 'seeked', 'sourceselected'],
+        custom: [...],
         preset: {
-           coreEvents: false,
-           UIEvents: false,
+           coreEvents: true,
+           UIEvents: true,
            playlistEvents: true,                   
            castEvents: true                                  
         }
