@@ -36,7 +36,7 @@ const player = KalturaPlayer.setup(config);
 
 ### Configuration
 
-Configure Your container id
+Configure your container id
 
 The container id is displayed on your admin tab in your [Google Tag Manager](https://tagmanager.google.com) dashboard (formatted as GTM-XXXXXX)
 
