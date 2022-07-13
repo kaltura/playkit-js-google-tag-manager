@@ -88,7 +88,8 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       this.player.Event.Core.PROGRESS,
       this.player.Event.Core.FPS_DROP,
       this.player.Event.Core.FRAG_LOADED,
-      this.player.Event.Core.AD_PROGRESS
+      this.player.Event.Core.AD_PROGRESS,
+      this.player.Event.Core.TEXT_CUE_CHANGED
     ].includes(customEvent);
   }
 
