@@ -80,7 +80,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
   private trackCustomEvent(customEvent: string): void {
     if (!(customEvent in this.allPlayerEvents)) {
-      this.logger.warn(`'${customEvent}' is invalid player event`);
+      this.logger.warn(`'${customEvent}' is an invalid player event`);
       return;
     }
     this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
