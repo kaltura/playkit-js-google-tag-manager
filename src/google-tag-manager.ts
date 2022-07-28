@@ -24,7 +24,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     }
   };
 
-  private allPlayerEvents!: { [event: string]: string };
+  private allPlayerEvents!: Set<string>;
 
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
@@ -79,7 +79,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private trackCustomEvent(customEvent: string): void {
-    if (!(customEvent in this.allPlayerEvents)) {
+    if (!this.allPlayerEvents.has(customEvent)) {
       this.logger.warn(`'${customEvent}' is an invalid player event`);
       return;
     }
@@ -96,9 +96,9 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       ...this.player.Event.Playlist,
       ...this.player.Event.Cast
     };
-    this.allPlayerEvents = {};
+    this.allPlayerEvents = new Set<string>();
     for (const key in allPlayerEvents) {
-      this.allPlayerEvents[allPlayerEvents[key]] = key;
+      this.allPlayerEvents.add(allPlayerEvents[key]);
     }
   }
 
