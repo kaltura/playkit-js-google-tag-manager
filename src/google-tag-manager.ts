@@ -96,10 +96,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
       ...this.player.Event.Playlist,
       ...this.player.Event.Cast
     };
-    this.allPlayerEvents = new Set<string>();
-    for (const key in allPlayerEvents) {
-      this.allPlayerEvents.add(allPlayerEvents[key]);
-    }
+    this.allPlayerEvents = new Set<string>(Object.values(allPlayerEvents));
   }
 
   private isNotHighFrequencyEvent(customEvent: string): boolean {
