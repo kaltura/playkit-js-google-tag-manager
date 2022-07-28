@@ -24,10 +24,13 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     }
   };
 
+  private allPlayerEvents!: Set<string>;
+
   constructor(name: string, player: KalturaPlayer, config: GoogleTagManagerConfig) {
     super(name, player, config);
     if (this.config.containerId.match(/^GTM-[A-Z1-9]{7}$/)) {
       this.loadTag();
+      this.aggregatePlayerEvents();
       this.initCustomEventsListeners();
     } else {
       this.logger.error('Invalid container ID provided. Tracking aborted');
@@ -76,10 +79,24 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
   }
 
   private trackCustomEvent(customEvent: string): void {
+    if (!this.allPlayerEvents.has(customEvent)) {
+      this.logger.warn(`'${customEvent}' is an invalid player event`);
+      return;
+    }
     this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
       const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
       window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
     });
+  }
+
+  private aggregatePlayerEvents(): void {
+    const allPlayerEvents = {
+      ...this.player.Event.Core,
+      ...this.player.Event.UI,
+      ...this.player.Event.Playlist,
+      ...this.player.Event.Cast
+    };
+    this.allPlayerEvents = new Set<string>(Object.values(allPlayerEvents));
   }
 
   private isNotHighFrequencyEvent(customEvent: string): boolean {
