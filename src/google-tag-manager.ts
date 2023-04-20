@@ -78,13 +78,21 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     trackedEvents.forEach((customEvent) => this.trackCustomEvent(customEvent));
   }
 
+
   private trackCustomEvent(customEvent: string): void {
     if (!this.allPlayerEvents.has(customEvent)) {
       this.logger.warn(`'${customEvent}' is an invalid player event`);
       return;
     }
+
     this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
-      const dataLayerVariablePayload = event.payload !== undefined ? { [`${event.type}-payload`]: event.payload } : {};
+      const eventPayload = event.payload !== undefined ? event.payload : {};
+      //@ts-ignore
+      eventPayload['entry_name'] = this.player.sources.metadata.name;
+      //@ts-ignore
+      eventPayload['entry_id'] = this.player.sources.metadata.entryId;
+
+      const dataLayerVariablePayload = { [`${event.type}-payload`]: eventPayload };
       window.dataLayer.push({ event: event.type, ...dataLayerVariablePayload });
     });
   }
