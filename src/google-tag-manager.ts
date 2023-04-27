@@ -78,7 +78,6 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
     trackedEvents.forEach((customEvent) => this.trackCustomEvent(customEvent));
   }
 
-
   private trackCustomEvent(customEvent: string): void {
     if (!this.allPlayerEvents.has(customEvent)) {
       this.logger.warn(`'${customEvent}' is an invalid player event`);
