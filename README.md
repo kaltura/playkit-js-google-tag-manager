@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/kaltura/playkit-js-google-tag-manager.svg?branch=master)](https://app.travis-ci.com/kaltura/playkit-js-google-tag-manager)
+[![Build Status](https://github.com/kaltura/playkit-js-google-tag-manager/actions/workflows/run_canary_full_flow.yaml/badge.svg)](https://github.com/kaltura/playkit-js-google-tag-manager/actions/workflows/run_canary_full_flow.yaml)
 [![](https://img.shields.io/npm/v/@playkit-js/google-tag-manager/latest.svg)](https://www.npmjs.com/package/@playkit-js/google-tag-manager)
 [![](https://img.shields.io/npm/v/@playkit-js/google-tag-manager/canary.svg)](https://www.npmjs.com/package/@playkit-js/google-tag-manager/v/canary)
 
