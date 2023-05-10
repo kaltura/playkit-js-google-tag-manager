@@ -86,8 +86,10 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
     this.eventManager.listen(this.player, customEvent, (event: FakeEvent) => {
       const eventPayload = event.payload !== undefined ? event.payload : {};
-      if (typeof this.player.sources.metadata.entryId === 'string') {
+      if (typeof this.player.sources.metadata.name === 'string') {
         eventPayload['entry_name'] = this.player.sources.metadata.name;
+      }
+      if (typeof this.player.sources.metadata.entryId === 'string') {
         eventPayload['entry_id'] = this.player.sources.metadata.entryId;
       }
 
