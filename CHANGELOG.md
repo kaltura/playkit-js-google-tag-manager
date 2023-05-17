@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.3 (2023-05-17)
+
+
+### Bug Fixes
+
+* **FEC-13123:** replace travis with github actions ([#13](https://github.com/kaltura/playkit-js-google-tag-manager/issues/13)) ([66ac804](https://github.com/kaltura/playkit-js-google-tag-manager/commit/66ac80480848400be11f7f956bf1cb5b39c6bd93))
+
 ### 1.3.2 (2023-05-07)
 
 ## 1.3.0 (2022-08-04)
