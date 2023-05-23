@@ -1,4 +1,4 @@
-import { BasePlugin, EventTypes, FakeEvent, KalturaPlayer } from 'kaltura-player-js';
+import { BasePlugin, EventTypes, FakeEvent, KalturaPlayer } from '@playkit-js/kaltura-player-js';
 import { HEAD_TAG, BODY_TAG } from './gtm-tags';
 import { GoogleTagManagerConfig } from './models/google-tag-manager-config';
 
