@@ -28,7 +28,7 @@ export class GoogleTagManager extends BasePlugin<GoogleTagManagerConfig> {
 
   constructor(name: string, player: KalturaPlayer, config?: GoogleTagManagerConfig) {
     super(name, player, config);
-    if (this.config.containerId.match(/^GTM-[A-Z1-9]{7}$/)) {
+    if (this.config.containerId.match(/^GTM-[A-Z1-9]{1,7}$/)) {
       this.loadTag();
       this.aggregatePlayerEvents();
       this.initCustomEventsListeners();
