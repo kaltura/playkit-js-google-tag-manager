@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.4 (2023-06-18)
+
+
+### Bug Fixes
+
+* **SUP-37882:** Events are not sent to GTM ([#17](https://github.com/kaltura/playkit-js-google-tag-manager/issues/17)) ([15ba984](https://github.com/kaltura/playkit-js-google-tag-manager/commit/15ba984d85960b7007569a34ab94f4bf649678b7))
+
 ### 1.3.3 (2023-05-17)
 
 
