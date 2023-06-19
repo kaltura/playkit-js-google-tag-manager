@@ -14,7 +14,7 @@ and transpiled in ECMAScript5 using [Babel](https://babeljs.io/) and the [TypeSc
 
 [Webpack] is used to build the distro bundle and serve the local development environment.
 
-[kaltura player]: https://github.com/kaltura/kaltura-player-js.
+[kaltura player]: https://github.com/kaltura/kaltura-player-js
 [Google Tag Manager]: https://developers.google.com/tag-platform/tag-manager
 [ecmascript6]: https://github.com/ericdouglas/ES6-Learning#articles--tutorials
 [typescript]: https://www.typescriptlang.org/
