@@ -20,6 +20,7 @@
     "playkit-js"
   ],
   "scripts": {
+    "preinstall": "npx --yes --prefer-online --registry=https://npm.pkg.github.com --package @kaltura/kaltura-tools@latest kaltura-tools check --root=.",
     "dev": "npm run build:dev && webpack serve --open --mode development",
     "watch": "webpack --watch --mode development",
     "build:dev": "webpack --mode development",
