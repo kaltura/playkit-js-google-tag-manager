@@ -19,7 +19,6 @@ module.exports = (env, { mode }) => {
         {
           test: /\.scss/,
           use: [
-            'style-loader',
             {
               loader: 'css-loader',
               options: {
