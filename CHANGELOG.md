@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.4.0 (2026-01-29)
+
+
+### Features
+
+* **FEC-14869:** Remove style-loader - No s/css files ([#21](https://github.com/kaltura/playkit-js-google-tag-manager/issues/21)) ([6c25933](https://github.com/kaltura/playkit-js-google-tag-manager/commit/6c25933e9e92f75db1af7e37a52d358a0182fc95))
+
 ### 1.3.4 (2023-06-18)
 
 
