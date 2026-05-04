@@ -1,0 +1,136 @@
+{
+  "repositoryName": "playkit-js-google-tag-manager",
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-04",
+  "coreResponsibility": {
+    "summary": "A Kaltura Player plugin that integrates Google Tag Manager (GTM) into the Kaltura Player ecosystem, enabling websites to track player events and communicate with GTM servers via the dataLayer API.",
+    "type": "plugin",
+    "category": "analytics-integration"
+  },
+  "domainAndLogicOwnership": {
+    "featureOwnership": [
+      "Google Tag Manager script injection (GTM container loading)",
+      "GTM dataLayer integration and management",
+      "Player event tracking (Core, UI, Playlist, Cast events)",
+      "Custom event configuration and filtering",
+      "Event payload enrichment (entry_name, entry_id metadata)",
+      "High-frequency event filtering (TIME_UPDATE, PROGRESS, FPS_DROP, etc.)",
+      "GTM container ID validation"
+    ],
+    "dataHandling": {
+      "managedStates": [
+        "GTM container loading state",
+        "Tracked events registry (Set of subscribed events)",
+        "Event payload data pushed to dataLayer"
+      ],
+      "dataObjects": [
+        "GoogleTagManagerConfig (containerId, customEventsTracking)",
+        "dataLayer array (window.dataLayer)",
+        "Event payloads with entry metadata"
+      ]
+    }
+  },
+  "integrationPoints": {
+    "upstream": {
+      "repositories": [
+        {
+          "name": "kaltura-player-js",
+          "relationship": "Core player framework providing BasePlugin, EventManager, and player event system",
+          "url": "https://github.com/kaltura/kaltura-player-js"
+        },
+        {
+          "name": "playkit-js",
+          "relationship": "Provides Core event types and FakeEvent interface",
+          "url": "https://github.com/kaltura/playkit-js"
+        },
+        {
+          "name": "playkit-js-ui",
+          "relationship": "Provides UI event types for tracking",
+          "url": "https://github.com/kaltura/playkit-js-ui"
+        }
+      ],
+      "services": []
+    },
+    "downstream": {
+      "consumers": [
+        "End-user web applications embedding Kaltura Player",
+        "Google Tag Manager dashboard (receives dataLayer events)",
+        "Third-party analytics platforms configured via GTM"
+      ]
+    },
+    "externalAPIs": [
+      {
+        "name": "Google Tag Manager SDK",
+        "type": "third-party",
+        "description": "GTM JavaScript snippet injection (gtm.js) for tag management",
+        "endpoint": "https://www.googletagmanager.com/gtm.js"
+      },
+      {
+        "name": "dataLayer API",
+        "type": "browser-api",
+        "description": "Google's dataLayer JavaScript array for pushing event data to GTM"
+      }
+    ]
+  },
+  "technicalStack": {
+    "primaryLanguages": ["TypeScript", "JavaScript"],
+    "frameworks": ["Webpack", "Babel"],
+    "buildTools": ["webpack", "ts-loader", "sass-loader"],
+    "testingFrameworks": [],
+    "entryPoints": [
+      {
+        "file": "src/index.ts",
+        "description": "Plugin registration entry point - registers googleTagManager plugin with Kaltura Player"
+      },
+      {
+        "file": "src/google-tag-manager.ts",
+        "description": "Core plugin implementation - GoogleTagManager class extending BasePlugin"
+      },
+      {
+        "file": "src/gtm-tags.ts",
+        "description": "GTM script templates (HEAD_TAG and BODY_TAG snippets)"
+      },
+      {
+        "file": "src/models/google-tag-manager-config.ts",
+        "description": "TypeScript interface for plugin configuration"
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "file": "dist/playkit-google-tag-manager.js",
+        "description": "Production bundle for distribution"
+      }
+    ]
+  },
+  "triageKeywords": [
+    "googleTagManager",
+    "google-tag-manager",
+    "GTM",
+    "GTM-",
+    "dataLayer",
+    "containerId",
+    "customEventsTracking",
+    "coreEvents",
+    "UIEvents",
+    "playlistEvents",
+    "castEvents",
+    "tag manager",
+    "event tracking",
+    "Invalid container ID",
+    "GTM Tag was already loaded"
+  ],
+  "errorPatterns": [
+    "Invalid container ID provided",
+    "GTM Tag was already loaded",
+    "is an invalid player event",
+    "dataLayer is not defined",
+    "window.dataLayer"
+  ],
+  "configurationKeys": [
+    "plugins.googleTagManager",
+    "plugins.googleTagManager.containerId",
+    "plugins.googleTagManager.customEventsTracking",
+    "plugins.googleTagManager.customEventsTracking.custom",
+    "plugins.googleTagManager.customEventsTracking.preset"
+  ]
+}
